@@ -1,7 +1,7 @@
 {
 	"name": "emdashlearn",
 	"version": "0.1.0",
-	"description": "Open source LMS plugin for emdash CMS — courses, progress, and learning on the edge",
+	"description": "Open source LMS plugin for EmDash CMS — courses, progress, and learning on the edge",
 	"type": "module",
 	"scripts": {
 		"dev": "astro dev",

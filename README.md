@@ -1,8 +1,8 @@
-# emdash—learn
+# EmDash—Learn
 
 > Open learning, on the edge.
 
-Open source LMS plugin for [emdash CMS](https://github.com/emdash-cms/emdash) — bringing courses, progress tracking, and structured learning to the Cloudflare Workers ecosystem.
+Open source LMS plugin for [EmDash CMS](https://github.com/emdash-cms/emdash) — bringing courses, progress tracking, and structured learning to the Cloudflare Workers ecosystem.
 
 ## Status
 
@@ -10,9 +10,9 @@ Open source LMS plugin for [emdash CMS](https://github.com/emdash-cms/emdash) �
 
 ## What it is
 
-emdashlearn extends emdash CMS with a complete learning management layer: courses, modules, lessons, enrollment, progress tracking, and certificate generation — all running on Cloudflare's edge network via the emdash plugin API.
+EmDash Learn extends EmDash CMS with a complete learning management layer: courses, modules, lessons, enrollment, progress tracking, and certificate generation — all running on Cloudflare's edge network via the EmDash plugin API.
 
-Built TypeScript-first, deployable to the edge, and designed to extend rather than replace your existing emdash site.
+Built TypeScript-first, deployable to the edge, and designed to extend rather than replace your existing EmDash site.
 
 ## Planned Features
 
@@ -28,13 +28,13 @@ Built TypeScript-first, deployable to the edge, and designed to extend rather th
 ## Plugin Architecture (Preview)
 
 ```typescript
-import { emdashLearnPlugin } from "emdashlearn";
+import { emDashLearnPlugin } from "emdashlearn";
 
 // astro.config.mjs
 export default defineConfig({
   integrations: [
     emdash({
-      plugins: [emdashLearnPlugin()],
+      plugins: [emDashLearnPlugin()],
     }),
   ],
 });
@@ -63,4 +63,4 @@ MIT — see [LICENSE](./LICENSE)
 
 ---
 
-Built for [emdash CMS](https://github.com/emdash-cms/emdash) — the TypeScript-first, Cloudflare-native CMS.
+Built for [EmDash CMS](https://github.com/emdash-cms/emdash) — the TypeScript-first, Cloudflare-native CMS.
