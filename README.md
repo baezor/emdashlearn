@@ -6,7 +6,7 @@ Open source LMS plugin for [EmDash CMS](https://github.com/emdash-cms/emdash) �
 
 ## Status
 
-🚧 **Coming soon.** This repository is in early planning. [Join the waitlist](https://emdashlearn.pages.dev) to be notified when it enters beta.
+🚧 **Coming soon.** This repository is in early planning. [Join the waitlist](https://emdashlearn.com) to be notified when it enters beta.
 
 ## What it is
 

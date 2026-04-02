@@ -1,4 +1,4 @@
-name = "emdashlearn"
+name = "emdashlearn-website"
 compatibility_date = "2026-02-24"
 compatibility_flags = ["nodejs_compat"]
 
