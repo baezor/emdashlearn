@@ -25,7 +25,7 @@
 	--color-progress-dim: rgba(74, 222, 128, 0.12);
 
 	/* Typography */
-	--font-display: "Syne", "Arial Black", sans-serif;
+	--font-display: "Syne", system-ui, sans-serif;
 	--font-body: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 	--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
