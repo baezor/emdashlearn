@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#080808"/>
+  <rect x="1" y="1" width="30" height="30" rx="5" stroke="#222222" stroke-width="0.5" fill="none"/>
+  <!-- Em dash as cursor motif -->
+  <text
+    x="16"
+    y="22"
+    text-anchor="middle"
+    font-family="'JetBrains Mono', 'Courier New', monospace"
+    font-weight="700"
+    font-size="18"
+    fill="#F48120"
+    letter-spacing="-1"
+  >—L</text>
+</svg>

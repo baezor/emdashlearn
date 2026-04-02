@@ -1,0 +1,155 @@
+---
+import Wordmark from "./Wordmark.astro";
+---
+
+<footer class="footer">
+	<div class="footer__inner">
+		<div class="footer__top">
+			<Wordmark size="sm" />
+			<p class="footer__tagline">Open learning, on the edge.</p>
+		</div>
+
+		<div class="footer__divider" aria-hidden="true"></div>
+
+		<div class="footer__bottom">
+			<p class="footer__copy">
+				&copy; 2026 emdashlearn contributors &mdash; MIT License
+			</p>
+			<nav class="footer__links" aria-label="Footer navigation">
+				<a
+					href="https://github.com/baezor/emdashlearn"
+					class="footer__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					GitHub
+				</a>
+				<a
+					href="https://github.com/emdash-cms/emdash"
+					class="footer__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					emdash CMS
+				</a>
+				<a
+					href="https://blog.cloudflare.com/emdash-wordpress/"
+					class="footer__link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Announcement
+				</a>
+			</nav>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		padding: var(--space-16) var(--space-8) var(--space-12);
+		position: relative;
+	}
+
+	.footer::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: var(--space-8);
+		right: var(--space-8);
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border),
+			transparent
+		);
+	}
+
+	.footer__inner {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-6);
+	}
+
+	.footer__top {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.footer__tagline {
+		font-family: var(--font-mono);
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		letter-spacing: 0.03em;
+	}
+
+	.footer__divider {
+		height: 1px;
+		background: var(--color-border-subtle);
+	}
+
+	.footer__bottom {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	@media (min-width: 640px) {
+		.footer__bottom {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	.footer__copy {
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		font-family: var(--font-mono);
+		letter-spacing: 0.03em;
+	}
+
+	.footer__links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-5);
+	}
+
+	.footer__link {
+		font-size: var(--font-size-xs);
+		color: var(--color-text-secondary);
+		font-family: var(--font-mono);
+		letter-spacing: 0.03em;
+		transition: color var(--transition);
+	}
+
+	.footer__link:hover {
+		color: var(--color-accent);
+	}
+
+	@media (min-width: 768px) {
+		.footer {
+			padding: var(--space-16) var(--space-12) var(--space-12);
+		}
+
+		.footer::before {
+			left: var(--space-12);
+			right: var(--space-12);
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.footer {
+			padding: var(--space-16) var(--space-20) var(--space-12);
+		}
+
+		.footer::before {
+			left: var(--space-20);
+			right: var(--space-20);
+		}
+	}
+</style>

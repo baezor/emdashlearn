@@ -1,0 +1,33 @@
+{
+	"name": "emdashlearn",
+	"version": "0.1.0",
+	"description": "Open source LMS plugin for emdash CMS — courses, progress, and learning on the edge",
+	"type": "module",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"typecheck": "astro check"
+	},
+	"keywords": [
+		"astro",
+		"cloudflare",
+		"lms",
+		"emdash",
+		"education",
+		"typescript"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"astro": "^6.1.3"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.8",
+		"@tailwindcss/vite": "^4.2.2",
+		"prettier": "^3.8.1",
+		"prettier-plugin-astro": "^0.14.1",
+		"tailwindcss": "^4.2.2",
+		"typescript": "^5.9.3",
+		"wrangler": "^4.80.0"
+	}
+}

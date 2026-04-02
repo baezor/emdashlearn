@@ -1,0 +1,220 @@
+---
+const props = [
+	{
+		icon: "—",
+		iconType: "mono",
+		heading: "Edge-native courses",
+		body: "Courses served from Cloudflare's global network. Sub-100ms load times anywhere on earth, scale-to-zero infrastructure.",
+	},
+	{
+		icon: "{ }",
+		iconType: "mono",
+		heading: "TypeScript throughout",
+		body: "Schema-defined courses with generated types. No surprise runtime errors. Full IntelliSense for course content authoring.",
+	},
+	{
+		icon: "▶",
+		iconType: "icon",
+		heading: "emdash plugin API",
+		body: "Drops into any emdash site via definePlugin(). Sandboxed by design — no unrestricted database access, ever.",
+	},
+	{
+		icon: "◎",
+		iconType: "icon",
+		heading: "Progress, not just pages",
+		body: "Built-in enrollment, completion tracking, and certificate generation. Learning state persisted to Cloudflare D1.",
+	},
+];
+---
+
+<section class="value-props" id="features">
+	<div class="value-props__inner">
+		<header class="value-props__header">
+			<p class="value-props__label">What's coming</p>
+			<h2 class="value-props__title">Course infrastructure<br /> for the modern web.</h2>
+		</header>
+
+		<div class="value-props__grid">
+			{
+				props.map((prop, i) => (
+					<article class="card" style={`animation-delay: ${i * 80}ms`}>
+						<div class="card__icon-wrap">
+							<span
+								class={`card__icon card__icon--${prop.iconType}`}
+								aria-hidden="true"
+							>
+								{prop.icon}
+							</span>
+						</div>
+						<h3 class="card__heading">{prop.heading}</h3>
+						<p class="card__body">{prop.body}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.value-props {
+		padding: var(--space-24) var(--space-8);
+		position: relative;
+	}
+
+	.value-props::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: var(--space-8);
+		right: var(--space-8);
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border),
+			transparent
+		);
+	}
+
+	.value-props__inner {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+	}
+
+	.value-props__header {
+		margin-bottom: var(--space-12);
+	}
+
+	.value-props__label {
+		font-family: var(--font-mono);
+		font-size: var(--font-size-xs);
+		color: var(--color-accent);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		margin-bottom: var(--space-3);
+	}
+
+	.value-props__title {
+		font-family: var(--font-display);
+		font-size: clamp(1.75rem, 4vw, 2.75rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+		color: var(--color-text);
+	}
+
+	.value-props__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-4);
+	}
+
+	@media (min-width: 640px) {
+		.value-props__grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	/* Card */
+	.card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--space-8);
+		transition:
+			border-color var(--transition),
+			transform var(--transition),
+			box-shadow var(--transition);
+		animation: fade-up 0.5s ease both;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.card::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			ellipse 60% 40% at 0% 0%,
+			var(--color-accent-glow) 0%,
+			transparent 60%
+		);
+		opacity: 0;
+		transition: opacity var(--transition-slow);
+	}
+
+	.card:hover {
+		border-color: var(--color-accent);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 32px rgba(244, 129, 32, 0.08);
+	}
+
+	.card:hover::before {
+		opacity: 1;
+	}
+
+	.card__icon-wrap {
+		margin-bottom: var(--space-5);
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--color-surface-raised);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+	}
+
+	.card__icon {
+		display: block;
+		line-height: 1;
+	}
+
+	.card__icon--mono {
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
+		color: var(--color-accent);
+	}
+
+	.card__icon--icon {
+		font-size: 0.875rem;
+		color: var(--color-accent);
+	}
+
+	.card__heading {
+		font-family: var(--font-display);
+		font-size: var(--font-size-lg);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+		margin-bottom: var(--space-3);
+	}
+
+	.card__body {
+		font-size: var(--font-size-sm);
+		color: var(--color-text-secondary);
+		line-height: 1.65;
+	}
+
+	@media (min-width: 768px) {
+		.value-props {
+			padding: var(--space-24) var(--space-12);
+		}
+
+		.value-props::before {
+			left: var(--space-12);
+			right: var(--space-12);
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.value-props {
+			padding: var(--space-24) var(--space-20);
+		}
+
+		.value-props::before {
+			left: var(--space-20);
+			right: var(--space-20);
+		}
+	}
+</style>

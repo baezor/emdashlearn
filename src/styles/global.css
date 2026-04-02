@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/*
+ * emdashlearn — design tokens
+ * Dark-first, edge-native, developer aesthetic.
+ * Mirrors emdash CMS CSS custom property conventions.
+ * Fonts: Syne (display), DM Sans (body), JetBrains Mono (mono) — loaded in Base.astro
+ */
+
+:root {
+	/* Color system */
+	--color-bg: #080808;
+	--color-surface: #0f0f0f;
+	--color-surface-raised: #161616;
+	--color-border: #222222;
+	--color-border-subtle: #1a1a1a;
+	--color-text: #e8e8e2;
+	--color-text-secondary: #9a9a94;
+	--color-muted: #5c5c58;
+	--color-accent: #f48120;
+	--color-accent-hover: #d96b10;
+	--color-accent-glow: rgba(244, 129, 32, 0.1);
+	--color-accent-glow-strong: rgba(244, 129, 32, 0.18);
+	--color-progress: #4ade80;
+	--color-progress-dim: rgba(74, 222, 128, 0.12);
+
+	/* Typography */
+	--font-display: "Syne", "Arial Black", sans-serif;
+	--font-body: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+	/* Type scale */
+	--font-size-xs: 0.6875rem;
+	--font-size-sm: 0.8125rem;
+	--font-size-base: 1rem;
+	--font-size-lg: 1.125rem;
+	--font-size-xl: 1.25rem;
+	--font-size-2xl: 1.5rem;
+	--font-size-3xl: 2rem;
+	--font-size-4xl: 2.75rem;
+	--font-size-5xl: 3.75rem;
+	--font-size-6xl: 5.5rem;
+	--font-size-7xl: 7.5rem;
+
+	/* Spacing */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.25rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+	--space-10: 2.5rem;
+	--space-12: 3rem;
+	--space-16: 4rem;
+	--space-20: 5rem;
+	--space-24: 6rem;
+	--space-32: 8rem;
+
+	/* Layout */
+	--max-width: 700px;
+	--wide-width: 1100px;
+
+	/* Effects */
+	--radius-sm: 3px;
+	--radius-md: 6px;
+	--radius-lg: 10px;
+	--transition: 140ms cubic-bezier(0.25, 0.1, 0.25, 1);
+	--transition-slow: 280ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-body);
+	font-size: 16px;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100dvh;
+	overflow-x: hidden;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Keyframe animations */
+@keyframes cursor-blink {
+	0%, 49% {
+		opacity: 1;
+	}
+	50%, 100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-up {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes progress-bar {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes glow-pulse {
+	0%, 100% {
+		opacity: 0.6;
+	}
+	50% {
+		opacity: 1;
+	}
+}

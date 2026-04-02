@@ -1,0 +1,321 @@
+---
+import Wordmark from "./Wordmark.astro";
+---
+
+<section class="hero">
+	<!-- Ambient background layers -->
+	<div class="hero__grid" aria-hidden="true"></div>
+	<div class="hero__bloom" aria-hidden="true"></div>
+
+	<!-- Top progress bar — symbolizes learning in progress -->
+	<div class="hero__progress-bar" aria-hidden="true">
+		<div class="hero__progress-fill"></div>
+	</div>
+
+	<div class="hero__content">
+		<!-- Status badge -->
+		<div class="hero__badge">
+			<span class="hero__badge-dot"></span>
+			<span>coming soon</span>
+		</div>
+
+		<!-- Wordmark -->
+		<div class="hero__wordmark">
+			<Wordmark size="hero" />
+		</div>
+
+		<!-- Tagline -->
+		<p class="hero__tagline">
+			<span class="hero__prompt" aria-hidden="true">›</span>
+			Open learning, on the edge.
+		</p>
+
+		<!-- Description -->
+		<p class="hero__description">
+			An open source LMS plugin for <a
+				href="https://github.com/emdash-cms/emdash"
+				class="hero__link"
+				target="_blank"
+				rel="noopener noreferrer">emdash CMS</a
+			> — bringing courses, progress tracking, and structured learning to the Cloudflare
+			Workers ecosystem.
+		</p>
+
+		<!-- CTAs -->
+		<div class="hero__ctas">
+			<a
+				href="https://github.com/baezor/emdashlearn"
+				class="btn btn--primary"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path
+						d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
+					></path>
+				</svg>
+				Star on GitHub
+			</a>
+			<a
+				href="https://github.com/emdash-cms/emdash"
+				class="btn btn--ghost"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				View emdash CMS
+				<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+					<path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5"/>
+				</svg>
+			</a>
+		</div>
+
+		<!-- Meta info -->
+		<p class="hero__meta">
+			<span>TypeScript-first</span>
+			<span class="hero__meta-dot" aria-hidden="true">·</span>
+			<span>MIT licensed</span>
+			<span class="hero__meta-dot" aria-hidden="true">·</span>
+			<span>Cloudflare Workers</span>
+		</p>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: 100svh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		padding: var(--space-24) var(--space-8);
+		overflow: hidden;
+	}
+
+	/* Dot-grid background */
+	.hero__grid {
+		position: absolute;
+		inset: 0;
+		background-image: radial-gradient(
+			circle,
+			rgba(255, 255, 255, 0.04) 1px,
+			transparent 1px
+		);
+		background-size: 32px 32px;
+		z-index: 0;
+		mask-image: radial-gradient(
+			ellipse 80% 80% at 50% 50%,
+			black 0%,
+			transparent 100%
+		);
+	}
+
+	/* Orange ambient bloom */
+	.hero__bloom {
+		position: absolute;
+		top: -20%;
+		left: -10%;
+		width: 70%;
+		height: 70%;
+		background: radial-gradient(
+			ellipse at center,
+			var(--color-accent-glow-strong) 0%,
+			var(--color-accent-glow) 30%,
+			transparent 70%
+		);
+		z-index: 0;
+		animation: glow-pulse 4s ease-in-out infinite;
+		pointer-events: none;
+	}
+
+	/* Progress bar at top */
+	.hero__progress-bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--color-border-subtle);
+		z-index: 100;
+	}
+
+	.hero__progress-fill {
+		height: 100%;
+		background: linear-gradient(
+			90deg,
+			var(--color-progress) 0%,
+			rgba(74, 222, 128, 0.4) 100%
+		);
+		transform-origin: left center;
+		animation: progress-bar 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+		box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+	}
+
+	.hero__content {
+		position: relative;
+		z-index: 1;
+		max-width: var(--wide-width);
+		width: 100%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-6);
+	}
+
+	/* Status badge */
+	.hero__badge {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-1) var(--space-3);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: 100px;
+		font-family: var(--font-mono);
+		font-size: var(--font-size-xs);
+		color: var(--color-text-secondary);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		width: fit-content;
+		animation: fade-in 0.4s ease both;
+	}
+
+	.hero__badge-dot {
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--color-progress);
+		box-shadow: 0 0 6px var(--color-progress);
+		animation: glow-pulse 2s ease-in-out infinite;
+	}
+
+	/* Wordmark */
+	.hero__wordmark {
+		animation: fade-up 0.5s ease 0.1s both;
+	}
+
+	/* Tagline */
+	.hero__tagline {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+		font-family: var(--font-display);
+		font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+		font-weight: 700;
+		color: var(--color-text-secondary);
+		letter-spacing: -0.01em;
+		animation: fade-up 0.5s ease 0.2s both;
+	}
+
+	.hero__prompt {
+		font-family: var(--font-mono);
+		color: var(--color-accent);
+		font-size: 1.1em;
+	}
+
+	/* Description */
+	.hero__description {
+		max-width: 52ch;
+		font-size: var(--font-size-lg);
+		color: var(--color-text-secondary);
+		line-height: 1.65;
+		animation: fade-up 0.5s ease 0.3s both;
+	}
+
+	.hero__link {
+		color: var(--color-accent);
+		text-decoration: underline;
+		text-decoration-color: rgba(244, 129, 32, 0.35);
+		text-underline-offset: 3px;
+		transition: text-decoration-color var(--transition);
+	}
+
+	.hero__link:hover {
+		text-decoration-color: var(--color-accent);
+	}
+
+	/* CTA buttons */
+	.hero__ctas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-3);
+		align-items: center;
+		animation: fade-up 0.5s ease 0.4s both;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-6);
+		border-radius: var(--radius-md);
+		font-family: var(--font-body);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		cursor: pointer;
+		transition: all var(--transition);
+		border: 1px solid transparent;
+	}
+
+	.btn--primary {
+		background: var(--color-accent);
+		color: #000;
+		border-color: var(--color-accent);
+	}
+
+	.btn--primary:hover {
+		background: var(--color-accent-hover);
+		border-color: var(--color-accent-hover);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 20px rgba(244, 129, 32, 0.3);
+	}
+
+	.btn--ghost {
+		background: transparent;
+		color: var(--color-text-secondary);
+		border-color: var(--color-border);
+	}
+
+	.btn--ghost:hover {
+		color: var(--color-text);
+		border-color: var(--color-muted);
+		transform: translateY(-1px);
+	}
+
+	/* Meta line */
+	.hero__meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-3);
+		font-family: var(--font-mono);
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+		letter-spacing: 0.04em;
+		animation: fade-up 0.5s ease 0.5s both;
+	}
+
+	.hero__meta-dot {
+		color: var(--color-border);
+	}
+
+	/* Responsive */
+	@media (min-width: 768px) {
+		.hero {
+			padding: var(--space-32) var(--space-12);
+		}
+
+		.hero__bloom {
+			width: 50%;
+			height: 50%;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.hero {
+			padding: var(--space-32) var(--space-20);
+		}
+	}
+</style>

@@ -1,0 +1,55 @@
+---
+interface Props {
+	size?: "sm" | "md" | "lg" | "hero";
+}
+const { size = "md" } = Astro.props;
+---
+
+<span class={`wordmark wordmark--${size}`} aria-label="emdashlearn">
+	<span class="wordmark__prefix">emdash</span><span class="wordmark__dash">—</span><span
+		class="wordmark__suffix">learn</span
+	>
+</span>
+
+<style>
+	.wordmark {
+		display: inline-flex;
+		align-items: baseline;
+		font-family: var(--font-display);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1;
+		user-select: none;
+	}
+
+	.wordmark__prefix,
+	.wordmark__suffix {
+		color: var(--color-text);
+	}
+
+	.wordmark__dash {
+		font-family: var(--font-mono);
+		font-weight: 700;
+		color: var(--color-accent);
+		animation: cursor-blink 1.2s step-end infinite;
+		/* Prevent layout shift from animation */
+		display: inline-block;
+	}
+
+	/* Sizes */
+	.wordmark--sm {
+		font-size: 1rem;
+	}
+
+	.wordmark--md {
+		font-size: 1.5rem;
+	}
+
+	.wordmark--lg {
+		font-size: 2rem;
+	}
+
+	.wordmark--hero {
+		font-size: clamp(3rem, 8vw, 6.5rem);
+	}
+</style>
