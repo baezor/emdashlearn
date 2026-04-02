@@ -2,5 +2,14 @@ name = "emdashlearn"
 compatibility_date = "2026-02-24"
 compatibility_flags = ["nodejs_compat"]
 
-[site]
-bucket = "./dist"
+[assets]
+directory = "dist"
+
+[[kv_namespaces]]
+binding = "SESSION"
+id = "35688a4fb2ce4f32b0d86455535ff438"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "emdashlearn-waitlist"
+database_id = "ac1f224e-46a8-49a6-8825-3ef40d79f47f"

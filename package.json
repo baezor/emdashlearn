@@ -7,7 +7,10 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"typecheck": "astro check"
+		"typecheck": "astro check",
+		"deploy": "astro build && wrangler deploy --config dist/server/wrangler.json",
+		"db:migrate": "wrangler d1 migrations apply emdashlearn-waitlist --remote",
+		"db:migrate:local": "wrangler d1 migrations apply emdashlearn-waitlist --local"
 	},
 	"keywords": [
 		"astro",
@@ -19,6 +22,7 @@
 	],
 	"license": "MIT",
 	"dependencies": {
+		"@astrojs/cloudflare": "^13.1.7",
 		"astro": "^6.1.3"
 	},
 	"devDependencies": {

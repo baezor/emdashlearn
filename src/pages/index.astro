@@ -4,13 +4,18 @@ import Hero from "../components/Hero.astro";
 import ValueProps from "../components/ValueProps.astro";
 import WaitlistForm from "../components/WaitlistForm.astro";
 import Footer from "../components/Footer.astro";
+
+const success = Astro.url.searchParams.get("success") === "true";
+const rawError = Astro.url.searchParams.get("error");
+const error =
+	rawError === "invalid" || rawError === "server" ? rawError : null;
 ---
 
 <Base>
 	<main>
 		<Hero />
 		<ValueProps />
-		<WaitlistForm />
+		<WaitlistForm success={success} error={error} />
 	</main>
 	<Footer />
 </Base>

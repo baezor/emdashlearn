@@ -1,9 +1,9 @@
 ---
 interface Props {
-	/* TODO: replace with a real Formspree or ConvertKit endpoint when ready */
-	action?: string;
+	success?: boolean;
+	error?: "invalid" | "server" | null;
 }
-const { action = "" } = Astro.props;
+const { success = false, error = null } = Astro.props;
 ---
 
 <section class="waitlist" id="waitlist">
@@ -12,41 +12,56 @@ const { action = "" } = Astro.props;
 			<p class="waitlist__label">Join the waitlist</p>
 			<h2 class="waitlist__title">Be the first to build<br /> with EmDash Learn.</h2>
 			<p class="waitlist__sub">
-				Get notified when emdashlearn enters beta. No spam — just a ping when it's
+				Get notified when EmDash Learn enters beta. No spam — just a ping when it's
 				ready.
 			</p>
 		</div>
 
-		<form
-			method="POST"
-			action={action}
-			class="waitlist__form"
-			novalidate
-			onsubmit="return false;"
-		>
-			<div class="waitlist__field">
-				<label for="email" class="sr-only">Email address</label>
-				<div class="waitlist__input-group">
-					<input
-						type="email"
-						id="email"
-						name="email"
-						placeholder="your@email.com"
-						required
-						autocomplete="email"
-						class="waitlist__input"
-					/>
-					<button type="submit" class="waitlist__btn">
-						Notify me
-					</button>
-				</div>
-			</div>
-			<p class="waitlist__fine-print">
-				<span>No spam.</span>
-				<span>MIT licensed.</span>
-				<span>Built in public.</span>
-			</p>
-		</form>
+		<div class="waitlist__form-wrap">
+			{
+				success ? (
+					<div class="waitlist__success">
+						<span class="waitlist__success-icon" aria-hidden="true">◎</span>
+						<p class="waitlist__success-title">You're on the list.</p>
+						<p class="waitlist__success-sub">
+							We'll reach out when EmDash Learn enters beta.
+						</p>
+					</div>
+				) : (
+					<form method="POST" action="/api/waitlist" class="waitlist__form">
+						{error === "server" && (
+							<p class="waitlist__error" role="alert">
+								Something went wrong. Please try again.
+							</p>
+						)}
+						<div class="waitlist__field">
+							<label for="email" class="sr-only">
+								Email address
+							</label>
+							<div class="waitlist__input-group">
+								<input
+									type="email"
+									id="email"
+									name="email"
+									placeholder="your@email.com"
+									required
+									autocomplete="email"
+									class="waitlist__input"
+								/>
+								<button type="submit" class="waitlist__btn">
+									Notify me
+								</button>
+							</div>
+						</div>
+						<p class="waitlist__fine-print">
+							<span>No spam.</span>
+							<span>MIT licensed.</span>
+							<span>Built in public.</span>
+						</p>
+					</form>
+				)
+			}
+		</div>
 	</div>
 </section>
 
@@ -111,10 +126,25 @@ const { action = "" } = Astro.props;
 	}
 
 	/* Form */
+	.waitlist__form-wrap {
+		display: flex;
+		flex-direction: column;
+	}
+
 	.waitlist__form {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-4);
+	}
+
+	.waitlist__error {
+		font-family: var(--font-mono);
+		font-size: var(--font-size-xs);
+		color: #f87171;
+		padding: var(--space-3) var(--space-4);
+		background: rgba(248, 113, 113, 0.08);
+		border: 1px solid rgba(248, 113, 113, 0.2);
+		border-radius: var(--radius-md);
 	}
 
 	.waitlist__field {
@@ -185,6 +215,36 @@ const { action = "" } = Astro.props;
 	.waitlist__fine-print span::before {
 		content: "✓ ";
 		color: var(--color-progress);
+	}
+
+	/* Success state */
+	.waitlist__success {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		padding: var(--space-8);
+		background: var(--color-progress-dim);
+		border: 1px solid rgba(74, 222, 128, 0.2);
+		border-radius: var(--radius-lg);
+	}
+
+	.waitlist__success-icon {
+		font-size: 1.5rem;
+		color: var(--color-progress);
+	}
+
+	.waitlist__success-title {
+		font-family: var(--font-display);
+		font-size: var(--font-size-xl);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.waitlist__success-sub {
+		font-size: var(--font-size-sm);
+		color: var(--color-text-secondary);
+		line-height: 1.6;
 	}
 
 	@media (min-width: 768px) {
